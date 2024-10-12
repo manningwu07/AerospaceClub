@@ -16,6 +16,8 @@ export default {
 
       colors: {
         // Add the 5 colors here
+        darkPurple: "#0a0a1f",
+        
       },
     },
   },

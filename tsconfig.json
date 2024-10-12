@@ -26,7 +26,8 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "three/*": ["node_modules/three/*"]
     }
   },
   "include": [
@@ -37,6 +38,6 @@
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts"
-  ],
+, "src/components/sections/landingPage"  ],
   "exclude": ["node_modules"]
 }
