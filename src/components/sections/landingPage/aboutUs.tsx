@@ -16,10 +16,9 @@ const getIconComponent = (iconName: string) => {
 
 export default function AboutUs() {
   const [icons, setIcons] = useState<Record<string, any>>({});
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
-    // Dynamically load all icons from the JSON
     const loadIcons = async () => {
       const loadedIcons: Record<string, any> = {};
       for (const ambition of AboutUsJSON.ambitions) {
@@ -27,7 +26,7 @@ export default function AboutUs() {
         loadedIcons[ambition.title] = IconComponent;
       }
       setIcons(loadedIcons);
-      setLoading(false); // Icons are fully loaded
+      setLoading(false);
     };
 
     loadIcons();
@@ -58,7 +57,7 @@ export default function AboutUs() {
 
       {loading ? (
         <div className="flex justify-center items-center my-12">
-          <p>Loading icons...</p> 
+          <p>Loading</p> 
         </div>
       ) : (
         <div className="mx-auto my-4 max-w-6xl md:my-8 lg:my-12">

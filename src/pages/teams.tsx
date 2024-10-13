@@ -1,38 +1,45 @@
-import { Rocket, HelpCircle, Cpu} from "lucide-react";
+import * as Icons from "lucide-react";
 import Link from "next/link";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
 import TeamsCard from "~/components/cards/teamsCard";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import TeamsJSON from "~/controlContentHere/Teams.json";
 
-const teams = [
-  {
-    name: "Airframe",
-    lead: "Emily Skywalker",
-    description:
-      "Responsible for designing, constructing, and optimizing the structural components of our rockets. This team focuses on ensuring the airframe's stability, aerodynamics, and structural integrity to withstand the forces encountered during launch and flight. They collaborate closely with all subteams to ensure the development of a functioning vehicle.",
-    icon: <Rocket className="h-8 w-8 text-blue-400" />,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    name: "Recovery",
-    lead: "Alex Stardust",
-    description:
-      "Tasked with developing and implementing mechanisms that ensure the safe return of the rocket to the ground after its flight. This includes the design and deployment of recovery systems such as parachutes. The team carefully considers factors like altitude, descent rate, and wind conditions to optimize the recovery process.",
-    icon: <HelpCircle className="h-8 w-8 text-green-400" />,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-  {
-    name: "Avionics",
-    lead: "Sam Nebula",
-    description:
-      "Focuses on the electronic systems, instrumentation, and control mechanisms of our rockets. This team is responsible for designing and integrating sensors, communication systems, and onboard computers. They play a crucial role in data collection, telemetry, and ensuring the rocket responds correctly to flight conditions.",
-    icon: <Cpu className="h-8 w-8 text-purple-400" />,
-    image: "/placeholder.svg?height=200&width=300",
-  },
-];
+interface Team {
+  name: string;
+  lead: string;
+  description: string;
+  icon: any;
+  image: string;
+}
+
+const teams: Team[] = TeamsJSON;
+
+const getIconComponent = (iconName: string) => {
+  const IconComponent = Icons[iconName as keyof typeof Icons];
+  return IconComponent ? IconComponent : Icons["HelpCircle"];
+};
 
 export default function TeamsPage() {
+  const [icons, setIcons] = useState<Record<string, any>>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadIcons = async () => {
+      const loadedIcons: Record<string, any> = {};
+      for (const team of teams) {
+        const IconComponent = getIconComponent(team.icon);
+        loadedIcons[team.name] = IconComponent;
+      }
+      setIcons(loadedIcons);
+      setLoading(false);
+    };
+
+    loadIcons();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Navbar />
@@ -43,18 +50,38 @@ export default function TeamsPage() {
       </section>
 
       <main className="container mx-auto px-4 py-8">
-        <section>
-          <div className="space-y-8">
-            {teams.map((team, index) => (
-              <TeamsCard key={index} team={team} />
-            ))}
+        {loading ? (
+          <div className="my-12 flex items-center justify-center">
+            <p>Loading</p>
           </div>
-        </section>
+        ) : (
+          <section>
+            <div className="space-y-8">
+              {teams.map((team, index) => (
+                <TeamsCard
+                  key={index}
+                  name={team.name}
+                  description={team.description}
+                  Icon={icons[team.name]}
+                  imageURL={team.image}
+                  iconColors="text-white"
+                  lead={team.lead}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </main>
-      
-      <h2 className="text-4xl text-center font-bold p-4">Want to find out how you can be part of a team?</h2>
 
-      <Link href="https://discord.gg/ydCE5eHe3H" target="_blank" className="py-8 flex justify-center items-center">
+      <h2 className="p-4 text-center text-4xl font-bold">
+        Want to find out how you can be part of a team?
+      </h2>
+
+      <Link
+        href="https://discord.gg/ydCE5eHe3H"
+        target="_blank"
+        className="flex items-center justify-center py-8"
+      >
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -63,7 +90,7 @@ export default function TeamsPage() {
           Join the discord to learn more
         </motion.button>
       </Link>
-        
+
       <Footer />
     </div>
   );
