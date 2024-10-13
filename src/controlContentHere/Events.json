@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "date": "October 13 2024",
+    "title": "Rocket Launch Simulation",
+    "time": "3:00 PM - 5:00 PM",
+    "location": "Virtual Event",
+    "description": "Join us for an exciting virtual rocket launch simulation. Learn about the intricacies of space flight and rocket engineering.",
+    "image": "/placeholder.svg?height=100&width=150"
+  },
+  {
+    "id": 2,
+    "date": "September 20 2024",
+    "title": "Guest Lecture: The Future of Space Exploration",
+    "time": "7:00 PM - 9:00 PM",
+    "location": "DHS Auditorium",
+    "description": "Renowned astronaut Dr. Jane Smith will discuss the future of space exploration and the role of young engineers in shaping it.",
+    "image": "/placeholder.svg?height=100&width=150"
+  },
+  {
+    "id": 3,
+    "date": "June 25 2024",
+    "title": "Aerospace Engineering Workshop",
+    "time": "10:00 AM - 4:00 PM",
+    "location": "DHS Engineering Lab",
+    "description": "A hands-on workshop covering the basics of aerospace engineering. Participants will design and build small-scale aircraft models.",
+    "image": "/placeholder.svg?height=100&width=150"
+  },
+  {
+    "id": 4,
+    "date": "June 25 2023",
+    "title": "Aerospace Engineering Workshop",
+    "time": "10:00 AM - 4:00 PM",
+    "location": "DHS Engineering Lab",
+    "description": "A hands-on workshop covering the basics of aerospace engineering. Participants will design and build small-scale aircraft models.",
+    "image": "/placeholder.svg?height=100&width=150"
+  }
+]
