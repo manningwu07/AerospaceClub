@@ -1,14 +1,44 @@
-import { HandshakeIcon, Rocket, Users } from "lucide-react";
+import * as Icons from "lucide-react"; 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import AmbitionsCard from "~/components/cards/ambitionsCard";
+import AboutUsJSON from "~/controlContentHere/AboutUs.json";
+
+const clubPhoto = AboutUsJSON.clubPhoto;
+const heading = AboutUsJSON.heading;
+const description = AboutUsJSON.description;
+const ambitions = AboutUsJSON.ambitions;
+
+const getIconComponent = (iconName: string) => {
+  const IconComponent = Icons[iconName as keyof typeof Icons];
+  return IconComponent ? IconComponent : Icons["HelpCircle"];
+};
 
 export default function AboutUs() {
+  const [icons, setIcons] = useState<Record<string, any>>({});
+  const [loading, setLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    // Dynamically load all icons from the JSON
+    const loadIcons = async () => {
+      const loadedIcons: Record<string, any> = {};
+      for (const ambition of AboutUsJSON.ambitions) {
+        const IconComponent = getIconComponent(ambition.icon);
+        loadedIcons[ambition.title] = IconComponent;
+      }
+      setIcons(loadedIcons);
+      setLoading(false); // Icons are fully loaded
+    };
+
+    loadIcons();
+  }, []);
+
   return (
     <div className="container mx-auto px-6">
       <div className="lg:flex lg:items-center lg:justify-center">
         <div className="flex items-center justify-center">
           <Image
-            src="/aboutUs.png"
+            src={clubPhoto}
             alt="About Us"
             width={500}
             height={500}
@@ -19,37 +49,33 @@ export default function AboutUs() {
           />
         </div>
         <div className="px-4">
-          <h2 className="my-8 text-center text-4xl font-bold">Who are we?</h2>
+          <h2 className="my-8 text-center text-4xl font-bold">{heading}</h2>
           <p className="mx-auto max-w-3xl text-center text-lg">
-            Dublin High School Aerospace is a club dedicated to pushing the
-            boundaries of plane and rocket discovery and innovation. Our mission
-            is to inspire and educate the next generation of aerospace engineers
-            and scientists, fostering a passion for discovery and technological
-            advancement.
+            {description}
           </p>
         </div>
       </div>
 
-      <div className="mx-auto my-4 max-w-6xl md:my-8 lg:my-12">
-        <h2 className="mb-12 text-center text-4xl font-bold">Our Ambitions</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          <AmbitionsCard
-            Icon={Rocket}
-            title="Competitions"
-            description="Reaching new heights in national and international rocketry competitions"
-          />
-          <AmbitionsCard
-            Icon={HandshakeIcon}
-            title="Connections"
-            description="Gaining industry-level experience and making lifelong friendships"
-          />
-          <AmbitionsCard
-            Icon={Users}
-            title="Community"
-            description="Educating local students and residents about aerospace technologies"
-          />
+      {/* Show loading indicator or empty state while icons are loading */}
+      {loading ? (
+        <div className="flex justify-center items-center my-12">
+          <p>Loading icons...</p> {/* Simple loading state */}
         </div>
-      </div>
+      ) : (
+        <div className="mx-auto my-4 max-w-6xl md:my-8 lg:my-12">
+          <h2 className="mb-12 text-center text-4xl font-bold">Our Ambitions</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {ambitions.map((ambition, index) => (
+                <AmbitionsCard
+                  key={ambition.title}
+                  Icon={icons[ambition.title]} // Use the title as the key to access the correct icon
+                  title={ambition.title}
+                  description={ambition.description}
+                />
+              ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
