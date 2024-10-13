@@ -1,31 +1,35 @@
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Mail } from "lucide-react";  
+import { Twitter, Instagram, Mail } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesome
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="py-12 bg-darkPurple opacity-80"> 
-    <div className="container mx-auto px-6 text-center text-gray-200">
-      <h2 className="text-2xl font-bold mb-8">Contact Us</h2>
-      <div className="flex justify-center space-x-6 mb-8">
-        <Link href="#" className=" hover:text-white transition-colors">
-          <Facebook size={24} />
-        </Link>
-        <Link href="#" className=" hover:text-white transition-colors">
-          <Twitter size={24} />
-        </Link>
-        <Link href="#" className=" hover:text-white transition-colors">
-          <Instagram size={24} />
-        </Link>
-        <Link href="mailto:info@dhsaerospace.com" className=" hover:text-white transition-colors">
-          <Mail size={24} />
-        </Link>
+    <footer id="contact" className="bg-darkPurple py-12 opacity-80">
+      <div className="container mx-auto px-6 text-center text-gray-200">
+        <h2 className="mb-8 text-2xl font-bold">Contact Us</h2>
+        <div className="mb-8 flex justify-center space-x-6">
+          <Link href="https://discord.gg/ydCE5eHe3H" className="transition-colors hover:text-white">
+            <FontAwesomeIcon icon={faDiscord} size="lg" className="text-zinc-200" />
+          </Link>
+          <Link href="#" className="transition-colors hover:text-white">
+            <Twitter size={24} />
+          </Link>
+          <Link href="#" className="transition-colors hover:text-white">
+            <Instagram size={24} />
+          </Link>
+          <Link
+            href="mailto:info@dhsaerospace.com"
+            className="transition-colors hover:text-white"
+          >
+            <Mail size={24} />
+          </Link>
+        </div>
+        <div className="flex justify-between">
+          <p>&copy; 2024 DHS Aerospace. All rights reserved.</p>
+          <p>Made by Manning Wu (Class of 2025)</p>
+        </div>
       </div>
-      <div className="flex justify-between">
-      <p>&copy; 2024 DHS Aerospace. All rights reserved.</p>
-      <p>Made by Manning Wu (Class of 2025)</p>
-      </div>
-      
-    </div>
-  </footer>
+    </footer>
   );
 }

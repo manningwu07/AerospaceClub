@@ -56,10 +56,9 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* Show loading indicator or empty state while icons are loading */}
       {loading ? (
         <div className="flex justify-center items-center my-12">
-          <p>Loading icons...</p> {/* Simple loading state */}
+          <p>Loading icons...</p> 
         </div>
       ) : (
         <div className="mx-auto my-4 max-w-6xl md:my-8 lg:my-12">
@@ -68,7 +67,7 @@ export default function AboutUs() {
               {ambitions.map((ambition, index) => (
                 <AmbitionsCard
                   key={ambition.title}
-                  Icon={icons[ambition.title]} // Use the title as the key to access the correct icon
+                  Icon={icons[ambition.title]}
                   title={ambition.title}
                   description={ambition.description}
                 />

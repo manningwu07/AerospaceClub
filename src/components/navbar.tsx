@@ -17,7 +17,7 @@ export default function Navbar() {
     { href: "/about", label: "About Us" },
     { href: "/events", label: "Events" },
     { href: "/teams", label: "The Teams" },
-    { href: "/classes", label: "Classes" },
+    { href: "/academy", label: "Aerospace Academy" }, 
     { href: "https://forms.gle/4fAXa5TBCZ1s67GW7", label: "Join Us", external: true },
   ]
 
