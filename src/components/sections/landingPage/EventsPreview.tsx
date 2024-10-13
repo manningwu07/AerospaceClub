@@ -3,6 +3,7 @@ import { ChevronDown, Search } from "lucide-react";
 import Link from "next/link";
 import EventsCard from "~/components/cards/eventsCard";
 import EventsJSON from "~/controlContentHere/Events.json";
+import { useRouter } from "next/router";
 
 interface Event {
   id: number;
@@ -29,6 +30,7 @@ export default function EventsPreview() {
     "Previous Years",
     "All Time",
   ];
+  const router = useRouter();
 
   useEffect(() => {
     const filterEvents = () => {
@@ -115,7 +117,7 @@ export default function EventsPreview() {
       </div>
       <div className="space-y-6">
         {filteredEvents.slice(0, 3).map((event) => (
-          <EventsCard key={event.id} event={event} />
+          <EventsCard key={event.id} event={event} onLearnMore={() => router.push(`/events`)} />
         ))}
         {filteredEvents.length > 3 && (
           <div className="text-center">

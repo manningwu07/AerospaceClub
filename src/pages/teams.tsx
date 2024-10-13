@@ -41,7 +41,7 @@ export default function TeamsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-darkPurple text-white">
       <Navbar />
 
       {/* Subteams section with group photo */}
