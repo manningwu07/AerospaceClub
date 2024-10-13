@@ -11,7 +11,7 @@ export default function JoinUs() {
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="rounded-full bg-blue-900 px-8 py-3 text-lg font-bold text-white transition-colors duration-300 hover:bg-blue-950"
+        className="rounded-full bg-accentYellow text-black px-8 py-3 text-lg font-bold transition-colors duration-300 hover:bg-yellow-700"
       >
         Join the Crew
       </motion.button>

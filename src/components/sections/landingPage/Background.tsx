@@ -5,6 +5,7 @@ import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useVideoTexture } from "@react-three/drei";
 import * as THREE from "three";
+import { set } from "zod";
 
 // Custom hook to handle scroll
 const useScroll = () => {
