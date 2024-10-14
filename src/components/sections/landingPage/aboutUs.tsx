@@ -1,6 +1,7 @@
 import * as Icons from "lucide-react"; 
 import Image from "next/image";
-import { useState, useEffect, SVGProps } from "react";
+import { useState, useEffect } from "react"; 
+import type { SVGProps } from "react"; 
 import AmbitionsCard from "~/components/cards/ambitionsCard";
 import AboutUsJSON from "~/controlContentHere/AboutUs.json";
 

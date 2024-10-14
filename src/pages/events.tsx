@@ -35,7 +35,7 @@ function parseEventDateTime(eventDate: string, eventTime: string): Date {
     const timeMatch = timeRegex.exec(eventTime);
 
     if (timeMatch) {
-      const [_, hoursStr, minutes, period] = timeMatch;
+      const [, hoursStr, minutes, period] = timeMatch;
       let hours = parseInt(hoursStr!, 10);
 
       // Handle AM/PM conversion
@@ -54,7 +54,7 @@ function parseEventDateTime(eventDate: string, eventTime: string): Date {
       parsedEventDate.setHours(23, 59, 0);
       return parsedEventDate;
     }
-  } catch (error) {
+  } catch {
     const fallbackDate = new Date(eventDate);
     fallbackDate.setHours(23, 59, 0);
     return fallbackDate;

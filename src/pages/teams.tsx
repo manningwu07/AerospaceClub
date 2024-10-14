@@ -4,7 +4,8 @@ import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
 import TeamsCard from "~/components/cards/teamsCard";
 import { motion } from "framer-motion";
-import { useState, useEffect, SVGProps } from "react";
+import { useState, useEffect } from "react";
+import type { SVGProps } from "react"; 
 import TeamsJSON from "~/controlContentHere/Teams.json";
 
 interface Team {
