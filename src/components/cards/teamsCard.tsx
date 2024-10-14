@@ -4,13 +4,12 @@ interface TeamsCardProps {
   name: string;
   lead: string;
   description: string;
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  iconColors: string,
+  Icon: JSX.Element;
   imageURL: string;
 }
 
 
-export default function TeamsCard({name, lead, description, Icon, iconColors, imageURL}: TeamsCardProps) {
+export default function TeamsCard({name, lead, description, Icon, imageURL}: TeamsCardProps) {
   return (
     <div
       key={name}
@@ -28,7 +27,7 @@ export default function TeamsCard({name, lead, description, Icon, iconColors, im
         </div>
         <div className="p-8">
           <div className="mb-2 flex items-center">
-            <Icon className={`h-8 w-8 ${iconColors}`} /> 
+            {Icon}
             <h3 className="ml-2 text-2xl font-semibold">{name}</h3>
           </div>
           <p className="mb-4 text-gray-400">Lead: {lead}</p>

@@ -1,6 +1,6 @@
 import * as Icons from "lucide-react"; 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, SVGProps } from "react";
 import AmbitionsCard from "~/components/cards/ambitionsCard";
 import AboutUsJSON from "~/controlContentHere/AboutUs.json";
 
@@ -9,18 +9,24 @@ const heading = AboutUsJSON.heading;
 const description = AboutUsJSON.description;
 const ambitions = AboutUsJSON.ambitions;
 
-const getIconComponent = (iconName: string) => {
-  const IconComponent = Icons[iconName as keyof typeof Icons];
-  return IconComponent ? IconComponent : Icons["HelpCircle"];
+type IconType = (props: SVGProps<SVGSVGElement>) => JSX.Element;
+
+const getIconComponent = (iconName: string): JSX.Element => {
+  // Returns an SVG icon component based on the icon name
+  const IconComponent = Icons[iconName as keyof typeof Icons] as IconType | undefined;
+  if (IconComponent) {
+    return <IconComponent className="h-8 w-8 text-gray-900" />;
+  }
+  return <Icons.HelpCircle className="h-8 w-8 text-gray-900" />;
 };
 
 export default function AboutUs() {
-  const [icons, setIcons] = useState<Record<string, any>>({});
+  const [icons, setIcons] = useState<Record<string, JSX.Element>>({});
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
-    const loadIcons = async () => {
-      const loadedIcons: Record<string, any> = {};
+    const loadIcons = () => {
+      const loadedIcons: Record<string, JSX.Element> = {};
       for (const ambition of AboutUsJSON.ambitions) {
         const IconComponent = getIconComponent(ambition.icon);
         loadedIcons[ambition.title] = IconComponent;
@@ -63,12 +69,12 @@ export default function AboutUs() {
         <div className="mx-auto my-4 max-w-6xl md:my-8 lg:my-12">
           <h2 className="mb-12 text-center text-4xl font-bold">Our Ambitions</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {ambitions.map((ambition, index) => (
+              {ambitions.map((ambition) => (
                 <AmbitionsCard
                   key={ambition.title}
-                  Icon={icons[ambition.title]}
                   title={ambition.title}
                   description={ambition.description}
+                  Icon={icons[ambition.title]!} // Assert icon is a JSX Element (based on useEffect and fallback JSX Element)
                 />
               ))}
           </div>

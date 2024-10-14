@@ -4,21 +4,24 @@
       "lead": "Team Leader",
       "description": "Description",
       "icon": "Rocket",
-      "image": "/placeholder.svg?height=200&width=300"
+      "image": "/placeholder.svg?height=200&width=300",
+      "iconColor": "green"
     },
     {
       "name": "Team 2",
       "lead": "Team Leader",
       "description": "Description",
       "icon": "LifeBuoy",
-      "image": "/placeholder.svg?height=200&width=300"
+      "image": "/placeholder.svg?height=200&width=300",
+      "iconColor": "white"
     },
     {
       "name": "Team 3",
       "lead": "Team Leader",
       "description": "Description",
       "icon": "Cpu",
-      "image": "/placeholder.svg?height=200&width=300"
+      "image": "/placeholder.svg?height=200&width=300",
+      "iconColor": "yellow"
     }
   ]
   

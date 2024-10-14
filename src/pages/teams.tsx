@@ -4,32 +4,38 @@ import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
 import TeamsCard from "~/components/cards/teamsCard";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, SVGProps } from "react";
 import TeamsJSON from "~/controlContentHere/Teams.json";
 
 interface Team {
   name: string;
   lead: string;
   description: string;
-  icon: any;
-  image: string;
+  icon: string;
+  image: string; 
 }
 
 const teams: Team[] = TeamsJSON;
 
-const getIconComponent = (iconName: string) => {
-  const IconComponent = Icons[iconName as keyof typeof Icons];
-  return IconComponent ? IconComponent : Icons["HelpCircle"];
+type IconType = (props: SVGProps<SVGSVGElement>) => JSX.Element;
+
+const getIconComponent = (iconName: string): JSX.Element => {
+  // Returns an SVG icon component based on the icon name
+  const IconComponent = Icons[iconName as keyof typeof Icons] as IconType | undefined;
+  if (IconComponent) {
+    return <IconComponent className={`h-8 w-8`} />;
+  }
+  return <Icons.HelpCircle className={`h-8 w-8`} />;
 };
 
 export default function TeamsPage() {
-  const [icons, setIcons] = useState<Record<string, any>>({});
+  const [icons, setIcons] = useState<Record<string, JSX.Element>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadIcons = async () => {
-      const loadedIcons: Record<string, any> = {};
-      for (const team of teams) {
+    const loadIcons = () => {
+      const loadedIcons: Record<string, JSX.Element> = {};
+      for (const team of teams) {  
         const IconComponent = getIconComponent(team.icon);
         loadedIcons[team.name] = IconComponent;
       }
@@ -62,9 +68,8 @@ export default function TeamsPage() {
                   key={index}
                   name={team.name}
                   description={team.description}
-                  Icon={icons[team.name]}
+                  Icon={icons[team.name]!}
                   imageURL={team.image}
-                  iconColors="text-white"
                   lead={team.lead}
                 />
               ))}

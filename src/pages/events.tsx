@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown, Search} from "lucide-react";
 import EventsCard from "~/components/cards/eventsCard";
 import EventsJSON from "~/controlContentHere/Events.json";
 import Footer from "~/components/footer";
@@ -31,10 +31,11 @@ function parseEventDateTime(eventDate: string, eventTime: string): Date {
       return new Date();
     }
 
-    const timeMatch = eventTime.match(/(\d{1,2}):(\d{2})\s?(AM|PM)/i);
+    const timeRegex = /(\d{1,2}):(\d{2})\s?(AM|PM)/i;
+    const timeMatch = timeRegex.exec(eventTime);
 
     if (timeMatch) {
-      let [_, hoursStr, minutes, period] = timeMatch;
+      const [_, hoursStr, minutes, period] = timeMatch;
       let hours = parseInt(hoursStr!, 10);
 
       // Handle AM/PM conversion

@@ -5,7 +5,6 @@ import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useVideoTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { set } from "zod";
 
 // Custom hook to handle scroll
 const useScroll = () => {
@@ -47,7 +46,7 @@ function Earth() {
     if (video) {
       const handleLoadedData = () => {
         setVideoReady(true);
-        video.play();
+        void video.play(); // void to suppress ESLint error (No need to await the promise I believe...) 
       };
       video.addEventListener("loadeddata", handleLoadedData);
       return () => {

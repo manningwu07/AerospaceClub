@@ -27,6 +27,8 @@ export function EventModal({ event, onClose }: { event: Event; onClose: () => vo
             <Image
               src={event.image}
               alt={event.title}
+              height={256}
+              width={256}
               layout="fill"
               objectFit="cover"
               className="rounded-lg"

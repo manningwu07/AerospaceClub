@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface BoardMember {
   id: number
   name: string
@@ -13,10 +15,12 @@ export default function BoardMembersCard({ member }: { member: BoardMember }) {
       className="transform overflow-hidden rounded-lg bg-gray-800 shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
     >
       <div className="relative pb-48">
-        <img
+        <Image
           className="absolute inset-0 h-full w-full object-cover"
           src={member.image}
           alt={member.name}
+          layout="fill"
+          objectFit="cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
       </div>
