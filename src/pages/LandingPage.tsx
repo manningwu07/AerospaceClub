@@ -1,12 +1,13 @@
 "use client";
 
-import Background from "~/components/sections/landingPage/Background";
+import Background from "~/components/sections/landing/Background";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
-import AboutUs from "~/components/sections/landingPage/AboutUs";
-import Projects from "~/components/sections/landingPage/EventsPreview";
+import AboutUs from "~/components/sections/landing/AboutUs";
+import Projects from "~/components/sections/landing/EventsPreview";
 import { useEffect, useState } from "react";
-import JoinUs from "~/components/sections/landingPage/JoinUs";
+import JoinUs from "~/components/sections/landing/JoinUs";
+import FrontPage from "~/components/sections/landing/FrontPage";
 
 export default function LandingPage() {
   const [loading, setLoading] = useState(true);
@@ -26,11 +27,7 @@ export default function LandingPage() {
           <Navbar />
           <main className="relative z-20">
             <section className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-              {/* <FrontPage />*/}
-              <h1 className="mb-4 text-5xl font-bold">DHS Aerospace Club</h1>
-              <p className="text-2xl text-blue-500">
-                Explore Beyond the Horizon
-              </p>
+              <FrontPage />
             </section>
 
             {/* About Us section */}

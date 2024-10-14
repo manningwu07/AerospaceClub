@@ -1,11 +1,10 @@
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
 import CourseSection from "~/components/cards/courseSelectionCard";
-import JoinUs from "~/components/sections/landingPage/JoinUs";
+import JoinUs from "~/components/sections/landing/JoinUs";
 import Testimonals from "~/components/sections/academy/Testimonals";
 
 export default function AerospaceAcademyPage() {
-
   return (
     <div className="relative min-h-screen bg-black">
       <div className="absolute left-0 top-0 z-10 h-full w-full opacity-50">

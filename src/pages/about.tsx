@@ -3,8 +3,8 @@ import Link from "next/link";
 import BoardMembersCard from "~/components/cards/boardMembersCard";
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
-import AboutUs from "~/components/sections/landingPage/AboutUs";
-import JoinUs from "~/components/sections/landingPage/JoinUs";
+import AboutUs from "~/components/sections/landing/AboutUs";
+import JoinUs from "~/components/sections/landing/JoinUs";
 import BoardMembersJSON from "~/controlContentHere/BoardMembers.json";
 
 interface BoardMember {
@@ -31,9 +31,7 @@ function BoardMembers() {
         </div>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {boardMembers.map((member, index) => (
-            <BoardMembersCard 
-            key={index}
-            member={member} />
+            <BoardMembersCard key={index} member={member} />
           ))}
         </div>
       </div>
