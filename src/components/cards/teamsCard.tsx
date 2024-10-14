@@ -16,13 +16,13 @@ export default function TeamsCard({name, lead, description, Icon, imageURL}: Tea
       className="overflow-hidden rounded-lg bg-gray-800 shadow-lg"
     >
       <div className="md:flex">
-        <div className="md:flex-shrink-0">
+        <div className="md:flex-shrink-0 flex justify-center items-center">
           <Image
             src={imageURL}
             alt={`${name} team`}
             width={300}
             height={200}
-            objectFit="cover"
+            className="h-auto w-full object-cover"
           />
         </div>
         <div className="p-8">

@@ -3,6 +3,10 @@ import Footer from "~/components/footer";
 import CourseSection from "~/components/cards/courseSelectionCard";
 import JoinUs from "~/components/sections/landing/JoinUs";
 import Testimonals from "~/components/sections/academy/Testimonals";
+import AcademyJSON from "~/controlContentHere/Academy.json";
+
+const courseSections = AcademyJSON.courseSections;
+
 
 export default function AerospaceAcademyPage() {
   return (
@@ -34,28 +38,17 @@ export default function AerospaceAcademyPage() {
           </div>
         </header>
 
-        {/* Main content */}
         <main className="container mx-auto px-4 py-12">
-          {/* Zigzag layout for course information */}
           <div className="space-y-24">
-            <CourseSection
-              title="Rocket Engineering 101"
-              description="Master the fundamentals of rocket design and propulsion systems in this comprehensive introductory course."
-              imageUrl="/rocket-course.jpg"
-              isReversed={false}
-            />
-            <CourseSection
-              title="Space Navigation and Orbital Mechanics"
-              description="Learn the intricacies of plotting courses through the cosmos and understanding the complex dance of celestial bodies."
-              imageUrl="/space-navigation.jpg"
-              isReversed={true}
-            />
-            <CourseSection
-              title="Advanced Materials in Aerospace"
-              description="Explore cutting-edge materials and their applications in spacecraft and aircraft construction."
-              imageUrl="/aerospace-materials.jpg"
-              isReversed={false}
-            />
+            {courseSections.map((course, index) => (
+              <CourseSection
+                key={index}
+                title={course.title}
+                description={course.description}
+                imageUrl={course.imageUrl}
+                isReversed={course.isReversed}
+              />
+            ))}
           </div>
 
           <section className="mt-24">

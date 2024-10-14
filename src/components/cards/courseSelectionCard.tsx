@@ -23,7 +23,7 @@ export default function CourseSection({
           Learn More <ChevronRight className="ml-2" />
         </button>
       </div>
-      <div className="md:w-1/2 p-6 rounded-2xl">
+      <div className="md:w-1/2 p-6 rounded-2xl flex justify-center items-center">
         <Image
           src={imageUrl}
           alt={title}

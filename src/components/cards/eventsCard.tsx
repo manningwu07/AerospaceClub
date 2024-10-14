@@ -25,7 +25,7 @@ export default function EventsCard({
     >
       <div className="md:flex">
         {/* Image Section: 40% width on medium screens and larger */}
-        <div className="w-full p-4 md:w-2/5 md:flex-shrink-0">
+        <div className="w-full p-4 md:w-2/5 md:flex-shrink-0 flex justify-center items-center">
           <Image
             src={event.image}
             alt={event.title}

@@ -1,0 +1,23 @@
+{
+    "courseSections": [
+      {
+        "title": "Rocket Engineering 101",
+        "description": "Master the fundamentals of rocket design and propulsion systems in this comprehensive introductory course.",
+        "imageUrl": "/teamMembers/testOne.png",
+        "isReversed": false
+      },
+      {
+        "title": "Space Navigation and Orbital Mechanics",
+        "description": "Learn the intricacies of plotting courses through the cosmos and understanding the complex dance of celestial bodies.",
+        "imageUrl": "/teamMembers/testTwo.png",
+        "isReversed": true
+      },
+      {
+        "title": "Advanced Materials in Aerospace",
+        "description": "Explore cutting-edge materials and their applications in spacecraft and aircraft construction.",
+        "imageUrl": "/teamMembers/testThree.png",
+        "isReversed": false
+      }
+    ]
+  }
+  
