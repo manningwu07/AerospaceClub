@@ -3,7 +3,6 @@
 import Background from "~/components/sections/landingPage/Background";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
-import FrontPage from "~/components/sections/landingPage/FrontPage";
 import AboutUs from "~/components/sections/landingPage/AboutUs";
 import Projects from "~/components/sections/landingPage/EventsPreview";
 import { useEffect, useState } from "react";
@@ -27,7 +26,11 @@ export default function LandingPage() {
           <Navbar />
           <main className="relative z-20">
             <section className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-              <FrontPage />
+              {/* <FrontPage />*/}
+              <h1 className="mb-4 text-5xl font-bold">DHS Aerospace Club</h1>
+              <p className="text-2xl text-blue-500">
+                Explore Beyond the Horizon
+              </p>
             </section>
 
             {/* About Us section */}
