@@ -25,9 +25,9 @@ export default function Footer() {
             <Mail size={24} />
           </Link>
         </div>
-        <div className="flex justify-between">
+        <div className="sm:flex sm:justify-between">
           <p>&copy; 2024 DHS Aerospace. All rights reserved.</p>
-          <p>Made by Manning Wu (Class of 2025)</p>
+          <p className="mt-4 sm:mt-0">Made by Manning Wu (Class of 2025)</p>
         </div>
       </div>
     </footer>
