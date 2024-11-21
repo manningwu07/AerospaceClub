@@ -27,7 +27,13 @@ export default function Footer() {
         </div>
         <div className="sm:flex sm:justify-between">
           <p>&copy; 2024 DHS Aerospace. All rights reserved.</p>
-          <p className="mt-4 sm:mt-0">Made by Manning Wu (Class of 2025)</p>
+          <div className="sm:mt-0 mt-4 flex justify-center">
+          Created by&nbsp;
+          <span>
+            <Link href="/admin">Manning Wu</Link>
+          </span>
+          &nbsp;(Class of 2025)
+        </div>
         </div>
       </div>
     </footer>

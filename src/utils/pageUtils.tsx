@@ -54,24 +54,26 @@ function hasCircularReference(obj: any, seen = new Set()) {
 
 // Function to fetch the entire content document from Firestore and cache it
 export async function fetchFullContent(): Promise<DataStructure | null> {
-  try {
-    const docRef = doc(db, "ehsSpeechAndDebate", "content");
-    const docSnap = await getDoc(docRef);
+  return initalContent as DataStructure;
 
-    if (docSnap.exists()) {
-      const data = docSnap.data() as DataStructure;
+  // try {
+  //   const docRef = doc(db, "ehsSpeechAndDebate", "content");
+  //   const docSnap = await getDoc(docRef);
 
-      // Cache the entire document in IndexedDB
-      await cacheData("fullContent", data);
-      return data;
-    } else {
-      console.error("Document does not exist");
-      return null;
-    }
-  } catch {
-    console.error("Error fetching data");
-    return null;
-  }
+  //   if (docSnap.exists()) {
+  //     const data = docSnap.data() as DataStructure;
+
+  //     // Cache the entire document in IndexedDB
+  //     await cacheData("fullContent", data);
+  //     return data;
+  //   } else {
+  //     console.error("Document does not exist");
+  //     return null;
+  //   }
+  // } catch {
+  //   console.error("Error fetching data");
+  //   return null;
+  // }
 }
 
 // Custom hook to manage content state

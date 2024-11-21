@@ -37,11 +37,11 @@ export default function LandingPage({ adminContent, adminError }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen font-sans text-white">
+    <div>
       {loading || !content  ? (
         <div className="flex h-screen items-center justify-center text-3xl">Loading</div>
       ) : (
-        <div>
+        <div className="font-sans text-white">
           <Background />
           <Navbar />
           <main className="relative z-20">

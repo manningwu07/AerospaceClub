@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 bg-opacity-80 bg-darkPurple text-white"
+      className="fixed left-0 right-0 top-0 z-40 bg-opacity-80 bg-darkPurple text-white"
       style={{ opacity }}
     >
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">

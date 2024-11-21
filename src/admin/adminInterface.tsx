@@ -23,7 +23,7 @@ export default function AdminInterface() {
   useEffect(() => {
     async function loadFullContent() {
       const fullContent = await fetchFullContent();
-      if(!fullContent) {
+      if (!fullContent) {
         throw new Error("Failed to load full content");
       }
       return fullContent;
@@ -76,7 +76,7 @@ export default function AdminInterface() {
 
   return (
     <div className="flex h-screen flex-col bg-gray-50">
-      <div className="flex items-center justify-between border-b p-4">
+      <div className="z-50 flex items-center justify-between border-b bg-white p-4">
         <DeployDialog
           isOpen={isDialogOpen}
           setIsOpen={setIsDialogOpen}
@@ -92,13 +92,13 @@ export default function AdminInterface() {
 
       <div className="flex flex-1 overflow-hidden">
         <ScrollArea
-          className="border-r"
+          className="z-50 border-r bg-white"
           style={{ width: `${sliderPosition}%` }}
         >
           <div className="space-y-8 p-8">
             <ScrollArea className="w-full">
               <div className="flex flex-wrap pb-4">
-                {["landing", "aeroAdvantage", "students", "parents"].map(
+                {["landing", "academy", "about", "events", "teams"].map(
                   (
                     page, // Change this to page names
                   ) => (
@@ -120,7 +120,7 @@ export default function AdminInterface() {
                 data[activePage as keyof typeof data],
                 handleEdit,
               )}
-            {renderEditField("components", data.components, handleEdit)}
+            {renderEditField("components", data.global, handleEdit)}
           </div>
         </ScrollArea>
 
