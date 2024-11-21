@@ -97,7 +97,7 @@ export default function TeamsPage({ adminContent, adminError }: PageProps) {
                   name={team.name}
                   description={team.description}
                   Icon={icons[team.name]!}
-                  imageURL={team.imageSrc}
+                  imageSrc={team.imageSrc}
                   lead={team.lead}
                 />
               ))}
