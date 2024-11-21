@@ -18,7 +18,7 @@ export interface DataStructure {
       buttonText: string;
     };
     aboutUs: {
-      clubPhoto: string;
+      clubPhotoSrc: string;
       heading: string;
       description: string;
       ambitionsTitle: string;
@@ -36,7 +36,7 @@ export interface DataStructure {
       time: string;
       location: string;
       description: string;
-      image: string;
+      imageSrc: string;
     }[];
   };
   landing: {
@@ -49,7 +49,7 @@ export interface DataStructure {
     courseSections: {
       title: string;
       description: string;
-      imageUrl: string;
+      imageSrc: string;
       isReversed: boolean;
     }[];
     testimonials: {
@@ -63,7 +63,7 @@ export interface DataStructure {
       name: string;
       role: string;
       description: string;
-      image: string;
+      imageSrc: string;
     }[];
   };
   teams: {
@@ -71,7 +71,7 @@ export interface DataStructure {
     lead: string;
     description: string;
     icon: string;
-    image: string;
+    imageSrc: string;
     iconColor: string;
   }[];
 }

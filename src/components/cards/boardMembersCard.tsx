@@ -1,12 +1,5 @@
 import Image from "next/image";
-
-interface BoardMember {
-  id: number
-  name: string
-  role: string
-  description: string
-  image: string
-}
+import type { BoardMember } from "~/types/boardMember";
 
 export default function BoardMembersCard({ member }: { member: BoardMember }) {
   return (
@@ -17,7 +10,7 @@ export default function BoardMembersCard({ member }: { member: BoardMember }) {
       <div className="relative pb-48">
         <Image
           className="absolute inset-0 h-full w-full object-cover"
-          src={member.image}
+          src={member.imageSrc}
           alt={member.name}
           layout="fill"
           objectFit="cover"

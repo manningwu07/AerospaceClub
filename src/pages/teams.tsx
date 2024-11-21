@@ -6,16 +6,14 @@ import TeamsCard from "~/components/cards/teamsCard";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import type { SVGProps } from "react"; 
-import { DataStructure } from "~/utils/dataStructure";
 import { PageProps, usePullContent } from "~/utils/pageUtils";
-import { set } from "zod";
 
 interface Team {
   name: string;
   lead: string;
   description: string;
   icon: string;
-  image: string; 
+  imageSrc: string; 
 }
 
 type IconType = (props: SVGProps<SVGSVGElement>) => JSX.Element;
@@ -99,7 +97,7 @@ export default function TeamsPage({ adminContent, adminError }: PageProps) {
                   name={team.name}
                   description={team.description}
                   Icon={icons[team.name]!}
-                  imageURL={team.image}
+                  imageURL={team.imageSrc}
                   lead={team.lead}
                 />
               ))}

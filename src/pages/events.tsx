@@ -7,18 +7,7 @@ import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import { EventModal } from "~/components/modal/EventModal";
 import { PageProps, usePullContent } from "~/utils/pageUtils";
-
-interface Event {
-  id: number;
-  date: string;
-  title: string;
-  time: string;
-  location: string;
-  description: string;
-  image: string;
-  isRecurring?: boolean;
-  recurrencePattern?: string;
-}
+import { Event } from "~/types/event";
 
 function parseEventDateTime(eventDate: string, eventTime: string): Date {
   try {
@@ -133,7 +122,7 @@ export default function EventsPage({ adminContent, adminError }: PageProps) {
     };
 
     setUpcomingEvents(filterUpcomingEvents());
-  }, [searchTerm, upcomingDateRange]);
+  }, [events, searchTerm, upcomingDateRange]);
 
   // Past events filtering
   useEffect(() => {
@@ -191,7 +180,7 @@ export default function EventsPage({ adminContent, adminError }: PageProps) {
     };
 
     setPastEvents(filterPastEvents());
-  }, [searchTerm, pastDateRange]);
+  }, [events, searchTerm, pastDateRange]);
 
 
   // Set events from content.global.events when content is updated
@@ -214,7 +203,7 @@ export default function EventsPage({ adminContent, adminError }: PageProps) {
     );
   }
 
-  if(!content) { 
+  if(!content || events.length === 0) {
     return (
       <div className="flex h-screen items-center justify-center text-3xl">Loading</div>
     )

@@ -23,11 +23,11 @@ export default function Navbar() {
 
   return (
     <motion.nav 
-      className="fixed left-0 right-0 top-0 z-40 bg-opacity-80 bg-darkPurple text-white"
+      className="fixed flex w-full justify-center z-40 bg-opacity-80 bg-darkPurple text-white"
       style={{ opacity }}
     >
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2">
+      <div className="px-6 py-3 flex w-full">
+        <Link href="/" className="flex items-center justify-start space-x-2">
           <Image
             src="/logo.png"
             alt="DHS Aerospace Logo"
@@ -37,7 +37,7 @@ export default function Navbar() {
           />
           <span className="text-xl font-bold">DHS Aerospace</span>
         </Link>
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center ml-auto space-x-4">
           {navItems.map((item) => (
             <Link
               key={item.href}

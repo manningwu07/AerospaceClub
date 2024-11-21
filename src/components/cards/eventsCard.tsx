@@ -1,15 +1,6 @@
 import { Calendar, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
-
-interface Event {
-  id: number;
-  date: string;
-  title: string;
-  time: string;
-  location: string;
-  description: string;
-  image: string;
-}
+import { Event } from "~/types/event";
 
 export default function EventsCard({
   event,
@@ -27,7 +18,7 @@ export default function EventsCard({
         {/* Image Section: 40% width on medium screens and larger */}
         <div className="w-full p-4 md:w-2/5 md:flex-shrink-0 flex justify-center items-center">
           <Image
-            src={event.image}
+            src={event.imageSrc}
             alt={event.title}
             width={300}
             height={300}

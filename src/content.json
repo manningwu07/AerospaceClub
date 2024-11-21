@@ -6,7 +6,7 @@
         "buttonText": "Join the Crew"
       },
       "aboutUs": {
-        "clubPhoto": "/aboutUs.png",
+        "clubPhotoSrc": "/aboutUs.png",
         "heading": "Who are we?",
         "description": "Dublin High School Aerospace is a club dedicated to pushing the boundaries of plane and rocket discovery and innovation. Our mission is to inspire and educate the next generation of aerospace engineers and scientists, fostering a passion for discovery and technological advancement.",
         "ambitions": [
@@ -36,7 +36,7 @@
           "time": "3:00 PM - 5:00 PM",
           "location": "Virtual Event",
           "description": "Join us for an exciting virtual rocket launch simulation. Learn about the intricacies of space flight and rocket engineering.",
-          "image": "/teamMembers/testOne.png"
+          "imageSrc": "/teamMembers/testOne.png"
         },
         {
           "id": 2,
@@ -45,7 +45,7 @@
           "time": "7:00 PM - 9:00 PM",
           "location": "DHS Auditorium",
           "description": "Renowned astronaut Dr. Jane Smith will discuss the future of space exploration and the role of young engineers in shaping it.",
-          "image": "/teamMembers/testOne.png"
+          "imageSrc": "/teamMembers/testOne.png"
         },
         {
           "id": 3,
@@ -54,7 +54,7 @@
           "time": "10:00 AM - 4:00 PM",
           "location": "DHS Engineering Lab",
           "description": "A hands-on workshop covering the basics of aerospace engineering. Participants will design and build small-scale aircraft models.",
-          "image": "/teamMembers/testTwo.png"
+          "imageSrc": "/teamMembers/testTwo.png"
         },
         {
           "id": 4,
@@ -63,7 +63,7 @@
           "time": "10:00 AM - 4:00 PM",
           "location": "DHS Engineering Lab",
           "description": "A hands-on workshop covering the basics of aerospace engineering. Participants will design and build small-scale aircraft models.",
-          "image": "/teamMembers/testThree.png"
+          "imageSrc": "/teamMembers/testThree.png"
         }
       ]
     },
@@ -78,19 +78,19 @@
         {
           "title": "Rocket Engineering 101",
           "description": "Master the fundamentals of rocket design and propulsion systems in this comprehensive introductory course.",
-          "imageUrl": "/teamMembers/testOne.png",
+          "imageSrc": "/teamMembers/testOne.png",
           "isReversed": false
         },
         {
           "title": "Space Navigation and Orbital Mechanics",
           "description": "Learn the intricacies of plotting courses through the cosmos and understanding the complex dance of celestial bodies.",
-          "imageUrl": "/teamMembers/testTwo.png",
+          "imageSrc": "/teamMembers/testTwo.png",
           "isReversed": true
         },
         {
           "title": "Advanced Materials in Aerospace",
           "description": "Explore cutting-edge materials and their applications in spacecraft and aircraft construction.",
-          "imageUrl": "/teamMembers/testThree.png",
+          "imageSrc": "/teamMembers/testThree.png",
           "isReversed": false
         }
       ],
@@ -116,42 +116,42 @@
           "name": "Name",
           "role": "Role",
           "description": "Description",
-          "image": "/placeholder.svg?height=400&width=300"
+          "imageSrc": "/placeholder.svg?height=400&width=300"
         },
         {
           "id": 2,
           "name": "Name",
           "role": "Role",
           "description": "Description",
-          "image": "/placeholder.svg?height=400&width=300"
+          "imageSrc": "/placeholder.svg?height=400&width=300"
         },
         {
           "id": 3,
           "name": "Name",
           "role": "Role",
           "description": "Description",
-          "image": "/placeholder.svg?height=400&width=300"
+          "imageSrc": "/placeholder.svg?height=400&width=300"
         },
         {
           "id": 4,
           "name": "Name",
           "role": "Role",
           "description": "Description",
-          "image": "/placeholder.svg?height=400&width=300"
+          "imageSrc": "/placeholder.svg?height=400&width=300"
         },
         {
           "id": 5,
           "name": "Name",
           "role": "Role",
           "description": "Description",
-          "image": "/placeholder.svg?height=400&width=300"
+          "imageSrc": "/placeholder.svg?height=400&width=300"
         },
         {
           "id": 6,
           "name": "Name",
           "role": "Role",
           "description": "Description",
-          "image": "/placeholder.svg?height=400&width=300"
+          "imageSrc": "/placeholder.svg?height=400&width=300"
         }
       ]
     },
@@ -161,7 +161,7 @@
         "lead": "Team Leader",
         "description": "Description",
         "icon": "Rocket",
-        "image": "/teamMembers/testOne.png",
+        "imageSrc": "/teamMembers/testOne.png",
         "iconColor": "green"
       },
       {
@@ -169,7 +169,7 @@
         "lead": "Team Leader",
         "description": "Description",
         "icon": "LifeBuoy",
-        "image": "/teamMembers/testTwo.png",
+        "imageSrc": "/teamMembers/testTwo.png",
         "iconColor": "white"
       },
       {
@@ -177,7 +177,7 @@
         "lead": "Team Leader",
         "description": "Description",
         "icon": "Cpu",
-        "image": "/teamMembers/testThree.png",
+        "imageSrc": "/teamMembers/testThree.png",
         "iconColor": "yellow"
       }
     ]

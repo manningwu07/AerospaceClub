@@ -16,7 +16,7 @@ const getIconComponent = (iconName: string): JSX.Element => {
   return <Icons.HelpCircle className="h-8 w-8 text-gray-900" />;
 };
 
-export default function AboutUs({clubPhoto, heading, description, ambitionsTitle, ambitions}: DataStructure["global"]["aboutUs"]) {
+export default function AboutUs({clubPhotoSrc, heading, description, ambitionsTitle, ambitions}: DataStructure["global"]["aboutUs"]) {
   const [icons, setIcons] = useState<Record<string, JSX.Element>>({});
   const [loading, setLoading] = useState(true); 
 
@@ -39,7 +39,7 @@ export default function AboutUs({clubPhoto, heading, description, ambitionsTitle
       <div className="lg:flex lg:items-center lg:justify-center">
         <div className="flex items-center justify-center">
           <Image
-            src={clubPhoto}
+            src={clubPhotoSrc}
             alt="About Us"
             width={500}
             height={500}

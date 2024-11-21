@@ -17,12 +17,13 @@ export const signInWithGoogle = async (): Promise<UserCredential | void> => {
 
 // Function to check if user is an admin
 export const checkIfAdmin = async (userEmail: string) => {
-  const docRef = doc(db, 'ehsSpeechAndDebate', 'authorizedUsers');
+  const docRef = doc(db, 'dhsaerospace', 'authorizedUsers');
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
     const adminEmails = docSnap.data()?.admin as string[] || [];
     const ownerEmail = docSnap.data()?.owner as string; 
+    console.log("emails:", adminEmails, ownerEmail);
     return adminEmails.includes(userEmail) || ownerEmail === userEmail; 
   }
   return false;

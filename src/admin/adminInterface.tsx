@@ -9,7 +9,6 @@ import { DeployDialog } from "./DeployDialog";
 import { PreviewPane } from "./PreviewPane";
 import { EmailManagementDialog } from "./emailManagementDialog";
 import { fetchFullContent } from "~/utils/pageUtils";
-// import initalContent from "~/content.json";
 
 export default function AdminInterface() {
   const [data, setData] = useState<DataStructure | null>(null);

@@ -12,7 +12,7 @@ export interface PageProps {
 
 // Helper function to initialize IndexedDB
 async function getDatabase() {
-  return openDB("ehsContentCache", 1, {
+  return openDB("dhsaerospace", 1, {
     upgrade(db) {
       db.createObjectStore("pages", { keyPath: "key" });
     },
@@ -54,26 +54,24 @@ function hasCircularReference(obj: any, seen = new Set()) {
 
 // Function to fetch the entire content document from Firestore and cache it
 export async function fetchFullContent(): Promise<DataStructure | null> {
-  return initalContent as DataStructure;
+  try {
+    const docRef = doc(db, "dhsaerospace", "content");
+    const docSnap = await getDoc(docRef);
 
-  // try {
-  //   const docRef = doc(db, "ehsSpeechAndDebate", "content");
-  //   const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = docSnap.data() as DataStructure;
 
-  //   if (docSnap.exists()) {
-  //     const data = docSnap.data() as DataStructure;
-
-  //     // Cache the entire document in IndexedDB
-  //     await cacheData("fullContent", data);
-  //     return data;
-  //   } else {
-  //     console.error("Document does not exist");
-  //     return null;
-  //   }
-  // } catch {
-  //   console.error("Error fetching data");
-  //   return null;
-  // }
+      // Cache the entire document in IndexedDB
+      await cacheData("fullContent", data);
+      return data;
+    } else {
+      console.error("Document does not exist");
+      return null;
+    }
+  } catch {
+    console.error("Error fetching data");
+    return null;
+  }
 }
 
 // Custom hook to manage content state
@@ -94,31 +92,30 @@ export function usePullContent() {
   }, []);
   
   const fetchContent = async (): Promise<DataStructure | null> => {
-    return initalContent as DataStructure;
-    // // Try to load cached data first
-    // const cachedData = await getCachedData("fullContent");
-    // if (cachedData) {
-    //   if (hasCircularReference(cachedData)) {
-    //     console.error("Circular reference detected in cached data:", cachedData);
-    //     return null;
-    //   }
-    //   return cachedData;
-    // }
+    // Try to load cached data first
+    const cachedData = await getCachedData("fullContent");
+    if (cachedData) {
+      if (hasCircularReference(cachedData)) {
+        console.error("Circular reference detected in cached data:", cachedData);
+        return null;
+      }
+      return cachedData;
+    }
   
-    // // Fetch from Firestore if no cached data
-    // const data = await fetchFullContent();
-    // if (data) {
-    //   if (hasCircularReference(data)) {
-    //     console.error("Circular reference detected in fetched data:", data);
-    //     return null;
-    //   }
+    // Fetch from Firestore if no cached data
+    const data = await fetchFullContent();
+    if (data) {
+      if (hasCircularReference(data)) {
+        console.error("Circular reference detected in fetched data:", data);
+        return null;
+      }
   
-    //   // Cache the data to IndexedDB
-    //   await cacheData("fullContent", JSON.parse(JSON.stringify(data)));
-    //   return data;
-    // }
+      // Cache the data to IndexedDB
+      await cacheData("fullContent", JSON.parse(JSON.stringify(data)));
+      return data;
+    }
   
-    // return null; // Return null if no data could be fetched
+    return null; // Return null if no data could be fetched
   };
   
 

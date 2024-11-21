@@ -33,7 +33,7 @@ export function PreviewPane({ data, activePage, width }: PreviewPaneProps) {
 
   return (
     <div className="bg-white" style={{ width: `${width}%` }}>
-      <ScrollArea className="h-full">{renderPreview()}</ScrollArea>
+      <ScrollArea className="h-full w-full">{renderPreview()}</ScrollArea>
     </div>
   );
 }

@@ -1,17 +1,6 @@
 import { X } from "lucide-react";
 import Image from "next/image";
-
-interface Event {
-  id: number;
-  date: string;
-  title: string;
-  time: string;
-  location: string;
-  description: string;
-  image: string;
-  isRecurring?: boolean;
-  recurrencePattern?: string;
-}
+import { Event } from "~/types/event";
 
 export function EventModal({ event, onClose }: { event: Event; onClose: () => void }) {
     return (
@@ -25,7 +14,7 @@ export function EventModal({ event, onClose }: { event: Event; onClose: () => vo
           </div>
           <div className="relative h-64 mb-4">
             <Image
-              src={event.image}
+              src={event.imageSrc}
               alt={event.title}
               height={256}
               width={256}

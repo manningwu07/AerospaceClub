@@ -6,14 +6,7 @@ import Navbar from "~/components/navbar";
 import AboutUs from "~/components/sections/landing/AboutUs";
 import JoinUs from "~/components/sections/landing/JoinUs";
 import { type PageProps, usePullContent } from "~/utils/pageUtils";
-
-interface BoardMember {
-  id: number;
-  name: string;
-  role: string;
-  description: string;
-  image: string;
-}
+import type { BoardMember } from "~/types/boardMember";
 
 function BoardMembers({ boardMembers }: { boardMembers: BoardMember[] }) {
   return (
