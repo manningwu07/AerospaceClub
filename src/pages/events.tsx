@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Search} from "lucide-react";
 import EventsCard from "~/components/cards/eventsCard";
-import EventsJSON from "~/controlContentHere/Events.json";
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import { EventModal } from "~/components/modal/EventModal";
+import { PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface Event {
   id: number;
@@ -19,8 +19,6 @@ interface Event {
   isRecurring?: boolean;
   recurrencePattern?: string;
 }
-
-const events: Event[] = EventsJSON;
 
 function parseEventDateTime(eventDate: string, eventTime: string): Date {
   try {
@@ -47,7 +45,6 @@ function parseEventDateTime(eventDate: string, eventTime: string): Date {
 
       // Set the hours and minutes to the parsed eventDate
       parsedEventDate.setHours(hours, parseInt(minutes!), 0);
-      console.log("parsedEventDate", parsedEventDate);
       return parsedEventDate;
     } else {
       // If time parsing fails, fallback to 23:59
@@ -61,8 +58,14 @@ function parseEventDateTime(eventDate: string, eventTime: string): Date {
   }
 }
 
-export default function EventsPage() {
+export default function EventsPage({ adminContent, adminError }: PageProps) {
+  const pullContent = usePullContent(); // Unconditionally call the hook
+
+  const content = adminContent ?? pullContent.content;
+  const error = adminError ?? pullContent.error;
+
   const [searchTerm, setSearchTerm] = useState("");
+  const [events, setEvents] = useState<Event[]>([]);
 
   // Upcoming events states
   const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
@@ -76,23 +79,10 @@ export default function EventsPage() {
 
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
-  const upcomingDateRanges = [
-    "This Month",
-    "Next 90 Days",
-    "This Year",
-    "Next Year",
-    "All Upcoming",
-  ];
-  const pastDateRanges = [
-    "Past 30 Days",
-    "Past 90 Days",
-    "Past Year",
-    "Older",
-    "All Past",
-  ];
-
   // Upcoming events filtering
   useEffect(() => {
+    if (!events) return;
+
     const filterUpcomingEvents = () => {
       const currentDate = new Date();
 
@@ -147,6 +137,8 @@ export default function EventsPage() {
 
   // Past events filtering
   useEffect(() => {
+    if (!events) return;
+    
     const filterPastEvents = () => {
       const currentDate = new Date();
 
@@ -200,6 +192,49 @@ export default function EventsPage() {
 
     setPastEvents(filterPastEvents());
   }, [searchTerm, pastDateRange]);
+
+
+  // Set events from content.global.events when content is updated
+  useEffect(() => {
+    if (content && content.global?.events) {
+      setEvents(content.global.events);
+    }
+  }, [content]);
+
+  if (error) {
+    // Display a fallback error message if Firestore fetch fails
+    return (
+      <div className="error-container">
+        <h1>Service Unavailable</h1>
+        <p>
+          We&apos;re experiencing issues retrieving content. Please try again
+          later.
+        </p>
+      </div>
+    );
+  }
+
+  if(!content) { 
+    return (
+      <div className="flex h-screen items-center justify-center text-3xl">Loading</div>
+    )
+  };
+
+
+  const upcomingDateRanges = [
+    "This Month",
+    "Next 90 Days",
+    "This Year",
+    "Next Year",
+    "All Upcoming",
+  ];
+  const pastDateRanges = [
+    "Past 30 Days",
+    "Past 90 Days",
+    "Past Year",
+    "Older",
+    "All Past",
+  ];
 
   const handleLearnMore = (event: Event) => {
     setSelectedEvent(event);

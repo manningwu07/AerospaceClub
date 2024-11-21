@@ -3,12 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react"; 
 import type { SVGProps } from "react"; 
 import AmbitionsCard from "~/components/cards/ambitionsCard";
-import AboutUsJSON from "~/controlContentHere/AboutUs.json";
-
-const clubPhoto = AboutUsJSON.clubPhoto;
-const heading = AboutUsJSON.heading;
-const description = AboutUsJSON.description;
-const ambitions = AboutUsJSON.ambitions;
+import { DataStructure } from "~/utils/dataStructure";
 
 type IconType = (props: SVGProps<SVGSVGElement>) => JSX.Element;
 
@@ -21,14 +16,14 @@ const getIconComponent = (iconName: string): JSX.Element => {
   return <Icons.HelpCircle className="h-8 w-8 text-gray-900" />;
 };
 
-export default function AboutUs() {
+export default function AboutUs({clubPhoto, heading, description, ambitionsTitle, ambitions}: DataStructure["global"]["aboutUs"]) {
   const [icons, setIcons] = useState<Record<string, JSX.Element>>({});
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const loadIcons = () => {
       const loadedIcons: Record<string, JSX.Element> = {};
-      for (const ambition of AboutUsJSON.ambitions) {
+      for (const ambition of ambitions) {
         const IconComponent = getIconComponent(ambition.icon);
         loadedIcons[ambition.title] = IconComponent;
       }
@@ -68,7 +63,7 @@ export default function AboutUs() {
         </div>
       ) : (
         <div className="mx-auto my-4 max-w-6xl md:my-8 lg:my-12">
-          <h2 className="mb-12 text-center text-4xl font-bold">Our Ambitions</h2>
+          <h2 className="mb-12 text-center text-4xl font-bold">{ambitionsTitle}</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {ambitions.map((ambition) => (
                 <AmbitionsCard

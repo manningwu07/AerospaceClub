@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dhsaerospace.netlify.app/sitemap.xml

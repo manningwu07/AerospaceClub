@@ -5,7 +5,7 @@ import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import AboutUs from "~/components/sections/landing/AboutUs";
 import JoinUs from "~/components/sections/landing/JoinUs";
-import BoardMembersJSON from "~/controlContentHere/BoardMembers.json";
+import { type PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface BoardMember {
   id: number;
@@ -15,9 +15,7 @@ interface BoardMember {
   image: string;
 }
 
-const boardMembers: BoardMember[] = BoardMembersJSON;
-
-function BoardMembers() {
+function BoardMembers({ boardMembers }: { boardMembers: BoardMember[] }) {
   return (
     <div className="px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -39,16 +37,40 @@ function BoardMembers() {
   );
 }
 
-export default function About() {
+export default function About({ adminContent, adminError }: PageProps) {
+  const pullContent = usePullContent(); // Unconditionally call the hook
+
+  const content = adminContent ?? pullContent.content;
+  const error = adminError ?? pullContent.error;
+
+  if (error) {
+    // Display a fallback error message if Firestore fetch fails
+    return (
+      <div className="error-container">
+        <h1>Service Unavailable</h1>
+        <p>
+          We&apos;re experiencing issues retrieving content. Please try again
+          later.
+        </p>
+      </div>
+    );
+  }
+
+  if(!content) { 
+    return (
+      <div className="flex h-screen items-center justify-center text-3xl">Loading</div>
+    )
+  };
+
   return (
     <div className="-z-10 bg-[url('/about/aboutBG.webp')] bg-cover bg-fixed bg-center text-white">
       <div className="bg-black bg-opacity-40">
         <Navbar />
         <div className="py-24 sm:py-32">
-          <AboutUs />
+          <AboutUs {...content.global.aboutUs} />
         </div>
-        <BoardMembers />
-        <JoinUs />
+        <BoardMembers boardMembers={content.about.boardMembers}/>
+        <JoinUs {...content.global.joinUs} />
         <div className="flex items-center justify-center py-4 sm:py-6">
           <motion.button
             whileHover={{ scale: 1.05 }}

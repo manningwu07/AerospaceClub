@@ -1,12 +1,8 @@
 import { motion } from "framer-motion";
-import JoinUsJSON from "~/controlContentHere/JoinUs.json";
 import Link from "next/link";
+import type { DataStructure } from "~/utils/dataStructure";
 
-const heading = JoinUsJSON.heading;
-const description = JoinUsJSON.description;
-const buttonText = JoinUsJSON.buttonText;
-
-export default function JoinUs() {
+export default function JoinUs({heading, description, buttonText}: DataStructure["global"]["joinUs"]) {
   return (
     <div className="container mx-auto px-6 text-center">
       <h2 className="mb-8 text-4xl font-bold">{heading}</h2>

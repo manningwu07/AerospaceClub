@@ -3,12 +3,35 @@ import Footer from "~/components/footer";
 import CourseSection from "~/components/cards/courseSelectionCard";
 import JoinUs from "~/components/sections/landing/JoinUs";
 import Testimonals from "~/components/sections/academy/Testimonals";
-import AcademyJSON from "~/controlContentHere/Academy.json";
+import { type PageProps, usePullContent } from "~/utils/pageUtils";
 
-const courseSections = AcademyJSON.courseSections;
+export default function AerospaceAcademyPage({ adminContent, adminError }: PageProps) {
+  const pullContent = usePullContent(); // Unconditionally call the hook
 
+  const content = adminContent ?? pullContent.content;
+  const error = adminError ?? pullContent.error;
 
-export default function AerospaceAcademyPage() {
+  if (error) {
+    // Display a fallback error message if Firestore fetch fails
+    return (
+      <div className="error-container">
+        <h1>Service Unavailable</h1>
+        <p>
+          We&apos;re experiencing issues retrieving content. Please try again
+          later.
+        </p>
+      </div>
+    );
+  }
+
+  if(!content) { 
+    return (
+      <div className="flex h-screen items-center justify-center text-3xl">Loading</div>
+    )
+  };
+
+  const courseSections = content.academy.courseSections;
+
   return (
     <div className="relative min-h-screen bg-black">
       <div className="absolute left-0 top-0 z-10 h-full w-full opacity-50">
@@ -52,11 +75,11 @@ export default function AerospaceAcademyPage() {
           </div>
 
           <section className="mt-24">
-            <Testimonals />
+            <Testimonals testimonials={content.academy.testimonials} />
           </section>
 
           <section className="my-8 md:my-12 lg:my-16">
-            <JoinUs />
+            <JoinUs {...content.global.joinUs} />
           </section>
         </main>
         <div className="bg-black">

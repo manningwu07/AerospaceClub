@@ -2,25 +2,13 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
 import Link from "next/link";
 import EventsCard from "~/components/cards/eventsCard";
-import EventsJSON from "~/controlContentHere/Events.json";
 import { useRouter } from "next/router";
+import type { DataStructure } from "~/utils/dataStructure";
 
-interface Event {
-  id: number;
-  date: string;
-  title: string;
-  time: string;
-  location: string;
-  description: string;
-  image: string;
-}
-
-const events: Event[] = EventsJSON;
-
-export default function EventsPreview() {
+export default function EventsPreview({ events }: { events: DataStructure["global"]["events"]}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [dateRange, setDateRange] = useState("All Time");
-  const [filteredEvents, setFilteredEvents] = useState<Event[]>(events);
+  const [filteredEvents, setFilteredEvents] = useState<DataStructure["global"]["events"]>(events);
   const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown visibility
 
   const dateRanges = [

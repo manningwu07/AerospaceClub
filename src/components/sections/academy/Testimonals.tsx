@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star } from "lucide-react";
-import TestimonialsJSON from "~/controlContentHere/Testimonals.json";
 import ShootingStarTrail from "~/components/ui/shootingStarTrail";
 import TestimonialCard from "~/components/cards/testimonalsCard";
+import { DataStructure } from "~/utils/dataStructure";
 
 interface Testimonial {
-  id: number;
   quote: string;
   author: string;
 }
-
-const testimonials: Testimonial[] = TestimonialsJSON;
 
 const generateQuadraticKeyframes = (steps: number): string[] => {
   const keyframes = [];
@@ -23,7 +20,7 @@ const generateQuadraticKeyframes = (steps: number): string[] => {
   return keyframes;
 };
 
-const Testimonials: React.FC = () => {
+const Testimonials = ({ testimonials }: { testimonials: DataStructure["academy"]["testimonials"] }) => {
   const [currentTestimonial, setCurrentTestimonial] =
     useState<Testimonial | null>(null);
   const [starIsAnimating, setStarIsAnimating] = useState(false);
@@ -67,6 +64,7 @@ const Testimonials: React.FC = () => {
         Our Club Member&apos;s Opinions
       </h2>
       {isMdOrLarger && (
+        // Desktop Animation Version
         <AnimatePresence>
           {starIsAnimating && (
             <div className="relative mt-10 flex w-screen items-center justify-center">
@@ -130,7 +128,7 @@ const Testimonials: React.FC = () => {
       <AnimatePresence>
         {currentTestimonial && !starIsAnimating && (
           <motion.div
-            key={currentTestimonial.id}
+            key={currentTestimonial.author}
             className="mx-auto max-w-md rounded-lg border border-darkPurple p-6 shadow-lg"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

@@ -6,7 +6,9 @@ import TeamsCard from "~/components/cards/teamsCard";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import type { SVGProps } from "react"; 
-import TeamsJSON from "~/controlContentHere/Teams.json";
+import { DataStructure } from "~/utils/dataStructure";
+import { PageProps, usePullContent } from "~/utils/pageUtils";
+import { set } from "zod";
 
 interface Team {
   name: string;
@@ -15,8 +17,6 @@ interface Team {
   icon: string;
   image: string; 
 }
-
-const teams: Team[] = TeamsJSON;
 
 type IconType = (props: SVGProps<SVGSVGElement>) => JSX.Element;
 
@@ -29,11 +29,19 @@ const getIconComponent = (iconName: string): JSX.Element => {
   return <Icons.HelpCircle className={`h-8 w-8`} />;
 };
 
-export default function TeamsPage() {
+export default function TeamsPage({ adminContent, adminError }: PageProps) {
+  const pullContent = usePullContent(); // Unconditionally call the hook
+
+  const content = adminContent ?? pullContent.content;
+  const error = adminError ?? pullContent.error;
+  
   const [icons, setIcons] = useState<Record<string, JSX.Element>>({});
   const [loading, setLoading] = useState(true);
-
+  const [teams, setTeams] = useState<Team[]>([]);
+  
   useEffect(() => {
+    if (!content) return;
+  
     const loadIcons = () => {
       const loadedIcons: Record<string, JSX.Element> = {};
       for (const team of teams) {  
@@ -44,8 +52,29 @@ export default function TeamsPage() {
       setLoading(false);
     };
 
+    setTeams(content.teams);
     loadIcons();
-  }, []);
+  }, [content]);
+
+
+  if (error) {
+    // Display a fallback error message if Firestore fetch fails
+    return (
+      <div className="error-container">
+        <h1>Service Unavailable</h1>
+        <p>
+          We&apos;re experiencing issues retrieving content. Please try again
+          later.
+        </p>
+      </div>
+    );
+  }
+
+  if(!content) { 
+    return (
+      <div className="flex h-screen items-center justify-center text-3xl">Loading</div>
+    )
+  };
 
   return (
     <div className="min-h-screen bg-darkPurple text-white">

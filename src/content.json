@@ -1,0 +1,185 @@
+{
+    "global": {
+      "joinUs": {
+        "heading": "Join the Crew",
+        "description": "Ready to embark on an exciting journey into the cosmos? Join DHS Aerospace and be part of the next generation of space explorers!",
+        "buttonText": "Join the Crew"
+      },
+      "aboutUs": {
+        "clubPhoto": "/aboutUs.png",
+        "heading": "Who are we?",
+        "description": "Dublin High School Aerospace is a club dedicated to pushing the boundaries of plane and rocket discovery and innovation. Our mission is to inspire and educate the next generation of aerospace engineers and scientists, fostering a passion for discovery and technological advancement.",
+        "ambitions": [
+          {
+            "icon": "Rocket",
+            "title": "Competitions",
+            "description": "Reaching new heights in national and international rocketry competitions"
+          },
+          {
+            "icon": "HandshakeIcon",
+            "title": "Connections",
+            "description": "Gaining industry-level experience and making lifelong friendships"
+          },
+          {
+            "icon": "Users",
+            "title": "Community",
+            "description": "Educating local students and residents about aerospace technologies"
+          }
+        ],
+        "comment": "When changing Icons under ambitions, make sure to import the Icon from Lucide-react and add it here below (in the {} brackets)"
+      },
+      "events": [
+        {
+          "id": 1,
+          "date": "October 13 2024",
+          "title": "Rocket Launch Simulation",
+          "time": "3:00 PM - 5:00 PM",
+          "location": "Virtual Event",
+          "description": "Join us for an exciting virtual rocket launch simulation. Learn about the intricacies of space flight and rocket engineering.",
+          "image": "/teamMembers/testOne.png"
+        },
+        {
+          "id": 2,
+          "date": "September 20 2024",
+          "title": "Guest Lecture: The Future of Space Exploration",
+          "time": "7:00 PM - 9:00 PM",
+          "location": "DHS Auditorium",
+          "description": "Renowned astronaut Dr. Jane Smith will discuss the future of space exploration and the role of young engineers in shaping it.",
+          "image": "/teamMembers/testOne.png"
+        },
+        {
+          "id": 3,
+          "date": "June 25 2024",
+          "title": "Aerospace Engineering Workshop",
+          "time": "10:00 AM - 4:00 PM",
+          "location": "DHS Engineering Lab",
+          "description": "A hands-on workshop covering the basics of aerospace engineering. Participants will design and build small-scale aircraft models.",
+          "image": "/teamMembers/testTwo.png"
+        },
+        {
+          "id": 4,
+          "date": "June 25 2023",
+          "title": "Aerospace Engineering Workshop",
+          "time": "10:00 AM - 4:00 PM",
+          "location": "DHS Engineering Lab",
+          "description": "A hands-on workshop covering the basics of aerospace engineering. Participants will design and build small-scale aircraft models.",
+          "image": "/teamMembers/testThree.png"
+        }
+      ]
+    },
+    "landing": {
+        "frontPage":{
+            "heading": "DHS Aerospace",
+            "description": "Explore Beyond the Horizon"
+        }
+    },
+    "academy": {
+      "courseSections": [
+        {
+          "title": "Rocket Engineering 101",
+          "description": "Master the fundamentals of rocket design and propulsion systems in this comprehensive introductory course.",
+          "imageUrl": "/teamMembers/testOne.png",
+          "isReversed": false
+        },
+        {
+          "title": "Space Navigation and Orbital Mechanics",
+          "description": "Learn the intricacies of plotting courses through the cosmos and understanding the complex dance of celestial bodies.",
+          "imageUrl": "/teamMembers/testTwo.png",
+          "isReversed": true
+        },
+        {
+          "title": "Advanced Materials in Aerospace",
+          "description": "Explore cutting-edge materials and their applications in spacecraft and aircraft construction.",
+          "imageUrl": "/teamMembers/testThree.png",
+          "isReversed": false
+        }
+      ],
+      "testimonials": [
+        {
+            "quote": "The Aerospace Academy opened up a universe of opportunities for me!",
+            "author": "Alex Stargazer"
+        },
+        {
+            "quote": "I never thought I'd be designing real spacecraft components. Now I am!",
+            "author": "Samantha Cosmos"
+        },
+        {
+            "quote": "I'm so excited to be a part of this program! I can't wait to learn more about space exploration and aerospace engineering.",
+            "author": "Matthew Johnson"
+        }
+    ]
+    },  
+    "about": {
+      "boardMembers": [
+        {
+          "id": 1,
+          "name": "Name",
+          "role": "Role",
+          "description": "Description",
+          "image": "/placeholder.svg?height=400&width=300"
+        },
+        {
+          "id": 2,
+          "name": "Name",
+          "role": "Role",
+          "description": "Description",
+          "image": "/placeholder.svg?height=400&width=300"
+        },
+        {
+          "id": 3,
+          "name": "Name",
+          "role": "Role",
+          "description": "Description",
+          "image": "/placeholder.svg?height=400&width=300"
+        },
+        {
+          "id": 4,
+          "name": "Name",
+          "role": "Role",
+          "description": "Description",
+          "image": "/placeholder.svg?height=400&width=300"
+        },
+        {
+          "id": 5,
+          "name": "Name",
+          "role": "Role",
+          "description": "Description",
+          "image": "/placeholder.svg?height=400&width=300"
+        },
+        {
+          "id": 6,
+          "name": "Name",
+          "role": "Role",
+          "description": "Description",
+          "image": "/placeholder.svg?height=400&width=300"
+        }
+      ]
+    },
+    "teams": [
+      {
+        "name": "Team 1",
+        "lead": "Team Leader",
+        "description": "Description",
+        "icon": "Rocket",
+        "image": "/teamMembers/testOne.png",
+        "iconColor": "green"
+      },
+      {
+        "name": "Team 2",
+        "lead": "Team Leader",
+        "description": "Description",
+        "icon": "LifeBuoy",
+        "image": "/teamMembers/testTwo.png",
+        "iconColor": "white"
+      },
+      {
+        "name": "Team 3",
+        "lead": "Team Leader",
+        "description": "Description",
+        "icon": "Cpu",
+        "image": "/teamMembers/testThree.png",
+        "iconColor": "yellow"
+      }
+    ]
+  }
+  
