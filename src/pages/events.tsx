@@ -6,8 +6,8 @@ import EventsCard from "~/components/cards/eventsCard";
 import Footer from "~/components/footer";
 import Navbar from "~/components/navbar";
 import { EventModal } from "~/components/modal/EventModal";
-import { PageProps, usePullContent } from "~/utils/pageUtils";
-import { Event } from "~/types/event";
+import { type PageProps, usePullContent } from "~/utils/pageUtils";
+import type { Event } from "~/types/event";
 
 function parseEventDateTime(eventDate: string, eventTime: string): Date {
   try {
@@ -185,7 +185,7 @@ export default function EventsPage({ adminContent, adminError }: PageProps) {
 
   // Set events from content.global.events when content is updated
   useEffect(() => {
-    if (content && content.global?.events) {
+    if (content?.global?.events) {
       setEvents(content.global.events);
     }
   }, [content]);

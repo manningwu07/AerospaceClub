@@ -1,6 +1,6 @@
 import { Calendar, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
-import { Event } from "~/types/event";
+import type { Event } from "~/types/event";
 
 export default function EventsCard({
   event,

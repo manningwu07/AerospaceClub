@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react"; 
 import type { SVGProps } from "react"; 
 import AmbitionsCard from "~/components/cards/ambitionsCard";
-import { DataStructure } from "~/utils/dataStructure";
+import type { DataStructure } from "~/utils/dataStructure";
 
 type IconType = (props: SVGProps<SVGSVGElement>) => JSX.Element;
 
@@ -32,7 +32,7 @@ export default function AboutUs({clubPhotoSrc, heading, description, ambitionsTi
     };
 
     loadIcons();
-  }, []);
+  }, [ambitions]);
 
   return (
     <div className="container mx-auto px-6">

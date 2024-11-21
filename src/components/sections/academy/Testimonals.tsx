@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star } from "lucide-react";
 import ShootingStarTrail from "~/components/ui/shootingStarTrail";
 import TestimonialCard from "~/components/cards/testimonalsCard";
-import { DataStructure } from "~/utils/dataStructure";
+import type { DataStructure } from "~/utils/dataStructure";
 
 interface Testimonial {
   quote: string;
@@ -53,7 +53,7 @@ const Testimonials = ({ testimonials }: { testimonials: DataStructure["academy"]
 
     const interval = setInterval(animateNextTestimonial, 5500); // Adjust cycle duration as needed
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials]);
 
   const steps = 20;
   const yKeyframes = generateQuadraticKeyframes(steps);

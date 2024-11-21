@@ -58,7 +58,7 @@ export default function EventsPreview({ events }: { events: DataStructure["globa
     };
 
     setFilteredEvents(filterEvents());
-  }, [searchTerm, dateRange]);
+  }, [events, searchTerm, dateRange]);
 
   return (
     <div className="mx-auto max-w-4xl border-spacing-1 rounded-lg border-2 border-gray-900 p-8 text-white shadow-2xl">

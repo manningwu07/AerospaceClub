@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { db } from "~/lib/firebase";
 import { openDB } from "idb";
 import type { DataStructure } from "./dataStructure";
-import initalContent from "~/content.json"
+// import initalContent from "~/content.json"
 
 export interface PageProps {
   adminContent?: DataStructure;

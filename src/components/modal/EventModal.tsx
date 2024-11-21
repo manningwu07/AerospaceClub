@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import Image from "next/image";
-import { Event } from "~/types/event";
+import type { Event } from "~/types/event";
 
 export function EventModal({ event, onClose }: { event: Event; onClose: () => void }) {
     return (

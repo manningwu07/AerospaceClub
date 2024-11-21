@@ -6,7 +6,7 @@ import TeamsCard from "~/components/cards/teamsCard";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import type { SVGProps } from "react"; 
-import { PageProps, usePullContent } from "~/utils/pageUtils";
+import { type PageProps, usePullContent } from "~/utils/pageUtils";
 
 interface Team {
   name: string;
@@ -52,7 +52,7 @@ export default function TeamsPage({ adminContent, adminError }: PageProps) {
 
     setTeams(content.teams);
     loadIcons();
-  }, [content]);
+  }, [teams, content]);
 
 
   if (error) {
