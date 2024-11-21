@@ -68,7 +68,7 @@ export default function AerospaceAcademyPage({ adminContent, adminError }: PageP
                 key={index}
                 title={course.title}
                 description={course.description}
-                imageUrl={course.imageSrc}
+                imageSrc={course.imageSrc}
                 isReversed={course.isReversed}
               />
             ))}

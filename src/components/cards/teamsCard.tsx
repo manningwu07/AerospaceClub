@@ -5,11 +5,11 @@ interface TeamsCardProps {
   lead: string;
   description: string;
   Icon: JSX.Element;
-  imageURL: string;
+  imageSrc: string;
 }
 
 
-export default function TeamsCard({name, lead, description, Icon, imageURL}: TeamsCardProps) {
+export default function TeamsCard({name, lead, description, Icon, imageSrc}: TeamsCardProps) {
   return (
     <div
       key={name}
@@ -18,7 +18,7 @@ export default function TeamsCard({name, lead, description, Icon, imageURL}: Tea
       <div className="md:flex">
         <div className="md:flex-shrink-0 flex justify-center items-center">
           <Image
-            src={imageURL}
+            src={imageSrc}
             alt={`${name} team`}
             width={300}
             height={200}

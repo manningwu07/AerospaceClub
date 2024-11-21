@@ -4,12 +4,12 @@ import Image from "next/image";
 export default function CourseSection({
   title,
   description,
-  imageUrl,
+  imageSrc,
   isReversed,
 }: {
   title: string;
   description: string;
-  imageUrl: string;
+  imageSrc: string;
   isReversed: boolean;
 }) {
   return (
@@ -25,7 +25,7 @@ export default function CourseSection({
       </div>
       <div className="md:w-1/2 p-6 rounded-2xl flex justify-center items-center">
         <Image
-          src={imageUrl}
+          src={imageSrc}
           alt={title}
           width={500}
           height={300}
